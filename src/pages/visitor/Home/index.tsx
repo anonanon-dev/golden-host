@@ -3,6 +3,7 @@ import HomeSwiber from "./components/HomeSwiber"
 import HomeSearch from "./components/HomeSearch"
 import HomeBenefits from "./components/HomeBenefits"
 import HomeFeelings from "./components/HomeFeelings"
+import HomeCategories from "./components/HomeCategories"
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <HomeSearch />
       <HomeBenefits />
       <HomeFeelings />
+      <HomeCategories />
     </Stack>
   )
 }
