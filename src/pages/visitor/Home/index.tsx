@@ -2,6 +2,7 @@ import {  Stack } from "@mui/material"
 import HomeSwiber from "./components/HomeSwiber"
 import HomeSearch from "./components/HomeSearch"
 import HomeBenefits from "./components/HomeBenefits"
+import HomeFeelings from "./components/HomeFeelings"
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <HomeSwiber />
       <HomeSearch />
       <HomeBenefits />
+      <HomeFeelings />
     </Stack>
   )
 }
