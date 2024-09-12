@@ -133,15 +133,16 @@ const Navbar = () => {
         open={drawerOpen}
         onClose={toggleDrawer(false)}
         sx={{
-          width: 450,
+          width: '80vw',
           '& .MuiDrawer-paper': {
-            width: 450,
+            width: '80vw',
             boxSizing: 'border-box',
           },
+
         }}
       >
-        <Box sx={{ p: 2 }}>
-          <IconButton onClick={toggleDrawer(false)} sx={{ float: 'right' }}>
+        <Box sx={{ p: 2 , bgcolor:'primary.main',color:'#fff', height: '100vh'}}  >
+          <IconButton onClick={toggleDrawer(false)} sx={{ float: 'right', color: '#fff' }}>
             <CloseIcon />
           </IconButton>
           <Stack direction="column" spacing={2} mt={2}>
