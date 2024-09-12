@@ -133,9 +133,9 @@ const Navbar = () => {
         open={drawerOpen}
         onClose={toggleDrawer(false)}
         sx={{
-          width: 250,
+          width: 450,
           '& .MuiDrawer-paper': {
-            width: 250,
+            width: 450,
             boxSizing: 'border-box',
           },
         }}
