@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Box, Button, Typography, Popover, Autocomplete, TextField } from '@mui/material';
+import { Tabs, Tab, Box, Button, Typography, Popover, Autocomplete, TextField, Grid } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MapIcon from '@mui/icons-material/Map';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
@@ -77,91 +77,101 @@ const HomeSearch = () => {
   };
 
   return (
-    <div style={{ width: '100%', padding: '100px' }} dir='rtl'>
-      <Tabs value={tabValue} onChange={(_, newValue) => handleTabChange(newValue)} aria-label="tabs">
+    <Box sx={{ width: '100%', p: { xs: 2, md: 4 }, dir: 'rtl' }}>
+      <Tabs
+        value={tabValue}
+        onChange={(_, newValue) => handleTabChange(newValue)}
+        aria-label="tabs"
+        variant="fullWidth"
+      >
         <Tab label="البحث" icon={<SearchIcon />} />
         <Tab label="الخريطه" icon={<MapIcon />} />
       </Tabs>
 
       {tabValue === 0 && (
         <Box p={3}>
-          <Box display="flex" flexDirection="row" gap={2}>
-            <Box flex={1}>
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item xs={12} md={3}>
               <Typography variant="h6">المدينة</Typography>
               <Autocomplete
                 disablePortal
                 options={cityOptions} // Use dummy data
                 getOptionLabel={(option) => option.title}
-                renderInput={(params) => <TextField {...params} label="بحث" />}
+                renderInput={(params) => <TextField {...params} label="بحث" fullWidth />}
               />
-            </Box>
+            </Grid>
 
-            <Box flex={1}>
+            <Grid item xs={12} md={3}>
               <Typography variant="h6">النوع</Typography>
               <Autocomplete
                 disablePortal
                 options={typeOptions} // Use dummy data
                 getOptionLabel={(option) => option.title}
-                renderInput={(params) => <TextField {...params} label="بحث" />}
+                renderInput={(params) => <TextField {...params} label="بحث" fullWidth />}
               />
-            </Box>
+            </Grid>
 
-            <Box flex={1}>
-              <Box display="flex" alignItems="center" gap={2}>
-                <Typography variant="h6">تاريخ الحجز</Typography>
-                <Button onClick={handleClick} endIcon={<CalendarTodayIcon />}>
-                  اختر موعد
+            <Grid item xs={12} md={3}>
+              <Box display="flex" alignItems="center" justifyContent="center" height="100%">
+                <Button onClick={handleClick} endIcon={<CalendarTodayIcon />} fullWidth>
+                  التاريخ
                 </Button>
-                <GradientButton startIcon={<ArrowBackIcon />}>
+              </Box>
+            </Grid>
+
+            <Grid item xs={12} md={3}>
+              <Box display="flex" alignItems="center" justifyContent="center" height="100%">
+                <GradientButton startIcon={<ArrowBackIcon />} fullWidth>
                   اكتشف
                 </GradientButton>
               </Box>
-              <Popover
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-              >
-                <Box p={2}>
-                  <Typography variant="body1" mb={1}>
-                    اختر فترة
-                  </Typography>
-                  <Box display="flex" flexDirection="row" gap={1} mb={2}>
-                    <Button variant="contained">يومي</Button>
-                    <Button variant="contained">اسبوعي</Button>
-                    <Button variant="contained">شهري</Button>
-                  </Box>
-                  <Box display="flex" flexDirection="row" gap={2}>
-                    <Box flex={1}>
-                      <Typography variant="body1" mb={1}>تاريخ البدء</Typography>
-                      <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker
-                          value={startDate}
-                          onChange={(newDate) => setStartDate(newDate)}
-                          // renderInput={(params: DatePickerProps<Dayjs, false>['renderInput']) => <TextField {...params} fullWidth />}
-                        />
-                      </LocalizationProvider>
-                    </Box>
-                    <Box flex={1}>
-                      <Typography variant="body1" mb={1}>تاريخ النهاية</Typography>
-                      <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker
-                          value={endDate}
-                          onChange={(newDate) => setEndDate(newDate)}
-                          // renderInput={(params: DatePickerProps<Dayjs, false>['renderInput']) => <TextField {...params} fullWidth />}
-                        />
-                      </LocalizationProvider>
-                    </Box>
-                  </Box>
-                  <ClearButton onClick={handleClearDates}>مسح</ClearButton>
+            </Grid>
+          </Grid>
+
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+          >
+            <Box p={2}>
+              <Typography variant="body1" mb={1}>
+                اختر فترة
+              </Typography>
+              <Box display="flex" flexDirection="row" gap={1} mb={2}>
+                <Button variant="contained" fullWidth>يومي</Button>
+                <Button variant="contained" fullWidth>اسبوعي</Button>
+                <Button variant="contained" fullWidth>شهري</Button>
+              </Box>
+              <Box display="flex" flexDirection="row" gap={2}>
+                <Box flex={1}>
+                  <Typography variant="body1" mb={1}>تاريخ البدء</Typography>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      value={startDate}
+                      onChange={(newDate) => setStartDate(newDate)}
+                      // renderInput={(params) => <TextField {...params} fullWidth />}
+                    />
+                  </LocalizationProvider>
                 </Box>
-              </Popover>
+                <Box flex={1}>
+                  <Typography variant="body1" mb={1}>تاريخ النهاية</Typography>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      value={endDate}
+                      onChange={(newDate) => setEndDate(newDate)}
+                      // renderInput={(params) => <TextField {...params} fullWidth />}
+                    />
+                  </LocalizationProvider>
+                </Box>
+              </Box>
+              <ClearButton onClick={handleClearDates}>مسح</ClearButton>
             </Box>
-          </Box>
+          </Popover>
         </Box>
       )}
 
@@ -174,7 +184,7 @@ const HomeSearch = () => {
           </Box>
         </Box>
       )}
-    </div>
+    </Box>
   );
 };
 

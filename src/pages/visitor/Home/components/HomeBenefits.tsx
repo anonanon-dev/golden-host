@@ -7,17 +7,23 @@ const HomeBenefits = () => {
         width: '100%',
         background: 'linear-gradient(90deg, #452775 0%, #DB186F 100%)',
         display: 'flex',
-        flexDirection: 'row-reverse',
+        flexDirection: {
+          xs:'column',
+          lg: 'row-reverse'
+        },
         justifyContent: 'center',
         alignItems: 'center',
-        gap: '150px',
+        gap: {
+          xs: '25px',
+          lg: '150px',
+        },
         color: '#FFFFFF',
-        paddingY: '20px',
-
+        py: '20px', // Correct paddingY to py
+        flexWrap: 'nowrap', // Corrected syntax
+        overflowX: 'auto', // Corrected syntax
       }}
-
     >
-      <Stack spacing={2} textAlign={'right'} alignItems="center" direction="row-reverse">
+      <Stack spacing={2} textAlign="right" alignItems="center" direction="row-reverse">
         <Box>
           <img src="/images/home/true.jpeg" alt="true" style={{ width: '35px' }} />
         </Box>
@@ -27,7 +33,7 @@ const HomeBenefits = () => {
         </Stack>
       </Stack>
 
-      <Stack spacing={2} alignItems="center" textAlign={'right'} direction="row-reverse" >
+      <Stack spacing={2} textAlign="right" alignItems="center" direction="row-reverse">
         <Box>
           <img src="/images/home/map.jpeg" alt="map icon" style={{ width: '35px' }} />
         </Box>
@@ -38,6 +44,6 @@ const HomeBenefits = () => {
       </Stack>
     </Stack>
   );
-}
+};
 
 export default HomeBenefits;

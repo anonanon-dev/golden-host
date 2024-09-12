@@ -57,7 +57,7 @@ const CurrencyButtonWithMenu: React.FC = () => {
 
   return (
     <div>
-      <CustomButtonGroup variant="contained" aria-label="currency and language selection">
+      <CustomButtonGroup variant="contained" sx={{marginX: '20px'}} aria-label="currency and language selection">
         <CustomButton
           aria-controls={isCurrencyMenuOpen ? 'currency-menu' : undefined}
           aria-haspopup="true"

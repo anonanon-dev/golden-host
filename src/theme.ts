@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
+// Light theme configuration
 const lightTheme = createTheme({
   palette: {
     mode: 'light',

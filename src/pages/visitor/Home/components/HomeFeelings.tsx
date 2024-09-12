@@ -7,13 +7,27 @@ const HomeFeelings: React.FC = () => {
     <Stack width="100%" marginTop="50px">
       {/* First part غير احساسك */}
       <Stack
-        flexDirection="row-reverse"
-        justifyContent="space-between"
-        width="1000px"
-        margin="auto"
+        sx={{
+          flexDirection: {
+            xs: 'column', // For extra-small screens
+            lg: 'row-reverse' // For large screens and up
+          },
+          justifyContent: 'space-between',
+          width: '100%',
+          maxWidth: '1000px',
+          margin: 'auto'
+        }}
       >
         {/* غير احساسك */}
-        <Box textAlign="right" width="100%">
+        <Box
+          sx={{
+            textAlign: {
+              xs: 'center', // For extra-small screens
+              lg: 'right'   // For large screens and up
+            }
+          }}
+          width="100%"
+        >
           <Typography variant="h3" color="primary.main" fontWeight="bold">
             غير احساسك
           </Typography>
@@ -60,14 +74,15 @@ const HomeFeelings: React.FC = () => {
       </Stack>
 
       {/* Images and things */}
-      <Grid container spacing={2} justifyContent="center" mt={4} width={'1500px'} margin={'auto'}>
+      <Grid container spacing={2} justifyContent="center" mt={4}>
         {[1, 2, 3].map((index) => (
           <Grid item key={index} xs={12} sm={6} md={4}>
             <Box
               sx={{
                 position: 'relative',
-                width: '512px',
-                height: '683px',
+                width: '100%', // Use full width of the grid item
+                height: 'auto', // Adjust height automatically
+                aspectRatio: '3 / 4', // Maintain aspect ratio for images
                 overflow: 'hidden',
                 borderRadius: '8px', // Optional: Rounded corners
                 '&:hover img': {

@@ -5,6 +5,10 @@ import { lightTheme, darkTheme } from './theme';
 import Home from './pages/visitor/Home';
 import VisitorLayout from './layouts/VisitorLayout';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+
 function App() {
   const [mode, setMode] = useState<'light' | 'dark'>('light');
 
@@ -13,11 +17,11 @@ function App() {
     setMode(savedMode);
   }, []);
 
-  const handleThemeChange = () => {
-    const newMode: 'light' | 'dark' = mode === 'light' ? 'dark' : 'light';
-    setMode(newMode);
-    localStorage.setItem('themeMode', newMode);
-  };
+  // const handleThemeChange = () => {
+  //   const newMode: 'light' | 'dark' = mode === 'light' ? 'dark' : 'light';
+  //   setMode(newMode);
+  //   localStorage.setItem('themeMode', newMode);
+  // };
 
   const appliedTheme: Theme = mode === 'light' ? lightTheme : darkTheme;
 
@@ -34,7 +38,7 @@ function App() {
       
       <CssBaseline />
       <RouterProvider router={router} />
-      <button onClick={handleThemeChange}>Toggle Theme</button>
+      {/* <button onClick={handleThemeChange}>Toggle Theme</button> */}
     </ThemeProvider>
   );
 }

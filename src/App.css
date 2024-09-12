@@ -1,0 +1,14 @@
+.gap-slider {
+  gap:50px !important; 
+}
+
+.slick-slider {
+  margin:0 -15px;
+}
+.slick-slide {
+  padding:10px;
+  background-color:red;
+  text-align:center;
+  margin-right:15px !important;
+  margin-left:15px !important;
+}

@@ -1,35 +1,42 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-import './styles/swiper.css';
-
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export default function App() {
+  const settings = {
+    centerMode: true,
+    centerPadding: '0px',
+    slidesToShow: 1.7,
+    speed: 500,
+    infinite: true,
+    dots: false,
+    arrows: true,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    <>
-      <Swiper
-        slidesPerView={1.7}
-        spaceBetween={30}
-        slidesPerGroupAuto
+    <div style={{ maxWidth: '100vw', margin: 'auto',marginTop: '100px' }}> {/* Added container div with width */}
+      <Slider {...settings} className="mySlider">
+        <div style={{ padding: '0 10px' }}> {/* Added padding */}
+          <img src="/public/images/home/swiper-1.jpeg" alt="Slide 1" style={{ width: '100%' }} />
+        </div>
+        <div style={{ padding: '0 10px' }}> {/* Added padding */}
+          <img src="/public/images/home/swiper-1.jpeg" alt="Slide 1" style={{ width: '100%' }} />
+        </div>
+        <div style={{ padding: '0 10px' }}> {/* Added padding */}
+          <img src="/public/images/home/swiper-1.jpeg" alt="Slide 1" style={{ width: '100%' }} />
+        </div>
         
-        className="mySwiper"
-      >
-        <SwiperSlide>
-        <img src="images/home/swiper-1.jpeg" alt="" />
-          
-        </SwiperSlide>
-        <SwiperSlide>
-        <img src="images/home/swiper-1.jpeg" alt="" />
-          
-        </SwiperSlide>
-        <SwiperSlide>
-        <img src="images/home/swiper-1.jpeg" alt="" />
-          
-        </SwiperSlide>
-        
-      </Swiper>
-    </>
+      </Slider>
+    </div>
   );
 }
