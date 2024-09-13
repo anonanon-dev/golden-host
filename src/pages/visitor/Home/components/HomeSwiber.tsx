@@ -6,7 +6,7 @@ export default function App() {
   const settings = {
     centerMode: true,
     centerPadding: '0px',
-    slidesToShow: 1.7,
+    slidesToShow: 1.6,
     speed: 500,
     infinite: true,
     dots: false,
@@ -24,8 +24,8 @@ export default function App() {
   };
 
   return (
-    <div style={{ maxWidth: '100vw', margin: 'auto',marginTop: '100px' }}> {/* Added container div with width */}
-      <Slider {...settings} className="mySlider">
+    <div style={{ maxWidth: '90vw', margin: 'auto',marginTop: '100px',  }}> {/* Added container div with width */}
+      <Slider {...settings} className="mySlider" >
         <div style={{ padding: '0 10px' }}> {/* Added padding */}
           <img src="/public/images/home/swiper-1.jpeg" alt="Slide 1" style={{ width: '100%' }} />
         </div>

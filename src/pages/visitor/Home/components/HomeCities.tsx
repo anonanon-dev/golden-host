@@ -1,9 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material';
 import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import './styles/slick.css'; // Ensure this path is correct
 
 // Define the cities array
 const cities = [
@@ -14,75 +10,22 @@ const cities = [
   { image: '/images/home/city-5.jpeg', name: 'الجبيل' },
 ];
 
-const settings = {
-  className: 'slider variable-width gap-slider',
-  dots: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 6,
-  slidesToScroll: 1,
-  responsive: [
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 960,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 1500,
-      settings: {
-        slidesToShow: 4,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 1700,
-      settings: {
-        slidesToShow: 5,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 2000,
-      settings: {
-        slidesToShow: 5,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
-
 const HomeCities: React.FC = () => {
   return (
     <Box
       width="80%"
-      mx="auto" // marginX in camelCase
-      mt={10} // marginTop in camelCase and using the MUI spacing unit
-      p={2} // padding in shorthand
+      mx="auto"
+      mt={10}
+      p={2}
       display="flex"
       flexDirection="column"
-      mb={6} // marginBottom in camelCase and using the MUI spacing unit
+      mb={6}
     >
       <Stack
         direction="row-reverse"
         justifyContent="space-between"
         alignItems="center"
-        mb={4} // marginBottom in camelCase and using the MUI spacing unit
+        mb={4}
       >
         <Typography color="primary.main" variant="h3" fontWeight="bold">
           المدينة
@@ -92,58 +35,94 @@ const HomeCities: React.FC = () => {
         </Typography>
       </Stack>
 
-      <Box width="100%">
-        <Slider {...settings}>
-          {cities.map((city, index) => (
-            <Box
-              key={index}
-              display="flex"
-              alignItems="center"
-              bgcolor="#f9f8fa" // backgroundColor in camelCase
-              borderRadius="120px"
-              overflow="hidden"
-              p={2} // padding in shorthand
-              flexDirection="row-reverse"
-              justifyContent="space-between"
-              height="auto"
+      <Box
+        width="100%"
+        overflow="auto"
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-around', // Adjust for better alignment
+          alignItems: 'center', // Center items vertically
+          overflowX: 'auto',
+          whiteSpace: 'nowrap',
+          overflowY:'visible',
+
+          scrollBehavior: 'smooth',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+          gap: '30px', // Gap between items
+        }}
+      >
+        {cities.map((city, index) => (
+          <Box
+            key={index}
+            display="flex"
+            alignItems="center"
+            bgcolor="#f9f8fa"
+            borderRadius="120px"
+            p={2}
+            flexDirection="row" // Ensure text is on the left, image is on the right
+            justifyContent="space-between"
+            boxSizing={'border-box'}
+            sx={{
+              // boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+              flexShrink: 0,
+              width: {
+                xs: '200px', // Width for small screens
+                sm: '270px', // Width for large screens
+              },
+              height: {
+                xs: '100px', // Height for small screens
+                sm: '130px', // Height for large screens
+              },
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <Typography
+              variant="h6"
+              fontSize="31px"
+              fontWeight="bold"
+              color="#615E69"
               sx={{
-                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                display: 'flex !important', // Ensure flex display is applied
+                flexShrink: 0,
+                width: 'auto', // Adjust width to fit text
+                textAlign: 'left',
               }}
             >
-              <Box
-                sx={{
-                  flexShrink: 0,
-                  width: {
-                    xs: '80px', // Smaller width for extra-small devices
-                    sm: '100px', // Medium width for small devices
-                    md: '120px', // Default width for medium devices
-                  },
-                  height: {
-                    xs: '80px', // Smaller height for extra-small devices
-                    sm: '100px', // Medium height for small devices
-                    md: '120px', // Default height for medium devices
-                  },
-                  overflow: 'hidden',
-                  borderRadius: '50%',
+              {city.name}
+            </Typography>
+            <Box
+              sx={{
+                flexShrink: 0,
+                width: {
+                  xs: '90px', // Width of image for small screens
+                  sm: '120px', // Width of image for large screens
+                },
+                height: {
+                  xs: '90px', // Height of image for small screens
+                  sm: '120px', // Height of image for large screens
+                },
+                overflow: 'hidden',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <img
+                src={city.image}
+                alt={city.name}
+                style={{
+                  objectFit: 'cover',
+                  width: '100%',
+                  height: '100%',
                 }}
-              >
-                <img
-                  src={city.image}
-                  alt={city.name}
-                  style={{
-                    objectFit: 'cover',
-                    width: '100%',
-                    height: '100%',
-                  }}
-                />
-              </Box>
-              <Typography variant="h6" fontSize="24px" color="#615E69">
-                {city.name}
-              </Typography>
+              />
             </Box>
-          ))}
-        </Slider>
+          </Box>
+        ))}
       </Box>
     </Box>
   );

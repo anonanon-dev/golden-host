@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Box, Button, Typography, Popover, Autocomplete, TextField, Grid } from '@mui/material';
+import { Box, Button, Typography, Popover, Autocomplete, TextField, Grid } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MapIcon from '@mui/icons-material/Map';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
@@ -7,7 +7,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { styled } from '@mui/material/styles';
-import { Dayjs } from 'dayjs';
+import  { Dayjs } from 'dayjs';
 
 // Define dummy data for options
 const cityOptions = [
@@ -28,18 +28,17 @@ const typeOptions = [
 
 // Styled Button for the linear gradient background
 const GradientButton = styled(Button)(({ theme }) => ({
-  background: 'linear-gradient(45deg, #6a1b9a 30%, #ab47bc 90%)',
+  background: 'linear-gradient(90deg, #452775 50%, #db186f 100%)',
   color: '#fff',
-  borderRadius: '21px',
-  padding: '6px 16px',
+  borderRadius: '51px',
+  padding: '11px',
+  width: '125px',
+  height: '54px',
   textTransform: 'none',
   fontWeight: 'bold',
   display: 'flex',
   alignItems: 'center',
   gap: theme.spacing(1),
-  '&:hover': {
-    background: 'linear-gradient(45deg, #6a1b9a 50%, #ab47bc 70%)',
-  },
 }));
 
 // Styled Button for the clear action
@@ -50,14 +49,46 @@ const ClearButton = styled(Button)(({ theme }) => ({
   fontWeight: 'bold',
 }));
 
+// Styled Tab Button
+const TabButton = styled(Button)<{ active?: boolean }>(({ theme, active }) => ({
+  width: '154px',
+  height: '56px',
+  padding: '11px 30px',
+  fontSize: '22px',
+  backgroundColor: active ? theme.palette.primary.main : 'transparent',
+  color: active ? '#fff' : theme.palette.text.primary,
+  borderRadius: '25px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: theme.spacing(1.5),
+  transition: 'background-color 0.3s, color 0.3s',
+}));
+
+// Styled Box for the date selection
+const DateSelectorBox = styled(Box)(({ theme }) => ({
+  backgroundColor: '#fff',
+  color: '#9e9e9e',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  padding: '15px 12px',
+  borderRadius: '8px',
+  cursor: 'pointer',
+  transitionDuration: '.3s',
+  '&:hover': {
+    backgroundColor: theme.palette.grey[200],
+  },
+}));
+
 const HomeSearch = () => {
-  const [tabValue, setTabValue] = useState(0);
+  const [activeTab, setActiveTab] = useState<number>(0);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [startDate, setStartDate] = useState<Dayjs | null>(null);
   const [endDate, setEndDate] = useState<Dayjs | null>(null);
 
-  const handleTabChange = (newValue: number) => {
-    setTabValue(newValue);
+  const handleTabChange = (index: number) => {
+    setActiveTab(index);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -77,51 +108,71 @@ const HomeSearch = () => {
   };
 
   return (
-    <Box sx={{ width: '100%', p: { xs: 2, md: 4 }, dir: 'rtl' }}>
-      <Tabs
-        value={tabValue}
-        onChange={(_, newValue) => handleTabChange(newValue)}
-        aria-label="tabs"
-        variant="fullWidth"
-      >
-        <Tab label="البحث" icon={<SearchIcon />} />
-        <Tab label="الخريطه" icon={<MapIcon />} />
-      </Tabs>
+    <Box sx={{ width: '100%', bgcolor: '#fff', p: { xs: 2, md: 4 }, display: 'flex', flexDirection: 'column' }} dir="rtl">
+      <Box sx={{
+        width: '380px',
+        height: '110px',
+        bgcolor: '#f9f8fa',
+        borderTopLeftRadius: '20px',
+        borderTopRightRadius: '20px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '26px',
+        gap: '20px',
+      }}>
+        <TabButton
+          onClick={() => handleTabChange(0)}
+          active={activeTab === 0}
+          startIcon={<SearchIcon />}
+        >
+          البحث
+        </TabButton>
+        <TabButton
+          onClick={() => handleTabChange(1)}
+          active={activeTab === 1}
+          startIcon={<MapIcon />}
+        >
+          الخريطه
+        </TabButton>
+      </Box>
 
-      {tabValue === 0 && (
-        <Box p={3}>
+      {activeTab === 0 && (
+        <Box p={3} sx={{ backgroundColor: "#f9f8fa", minHeight: "150px" }}>
           <Grid container spacing={2} justifyContent="center">
             <Grid item xs={12} md={3}>
-              <Typography variant="h6">المدينة</Typography>
+              <Typography variant="h5" sx={{ color: "#452775", mb: '10px' }}>المدينة</Typography>
               <Autocomplete
                 disablePortal
-                options={cityOptions} // Use dummy data
+                options={cityOptions}
                 getOptionLabel={(option) => option.title}
                 renderInput={(params) => <TextField {...params} label="بحث" fullWidth />}
               />
             </Grid>
 
             <Grid item xs={12} md={3}>
-              <Typography variant="h6">النوع</Typography>
+              <Typography variant="h5" sx={{ color: "#452775", mb: '10px' }}>النوع</Typography>
               <Autocomplete
                 disablePortal
-                options={typeOptions} // Use dummy data
+                options={typeOptions}
                 getOptionLabel={(option) => option.title}
                 renderInput={(params) => <TextField {...params} label="بحث" fullWidth />}
               />
             </Grid>
 
             <Grid item xs={12} md={3}>
-              <Box display="flex" alignItems="center" justifyContent="center" height="100%">
-                <Button onClick={handleClick} endIcon={<CalendarTodayIcon />} fullWidth>
-                  التاريخ
-                </Button>
-              </Box>
+              <Typography variant="h5" sx={{ color: "#452775", mb: '10px' }}>التاريخ</Typography>
+              <DateSelectorBox onClick={handleClick}>
+                <CalendarTodayIcon />
+                <Typography variant="body1">
+                  {startDate ? startDate.format('YYYY-MM-DD') : 'اختر التاريخ'}
+                </Typography>
+              </DateSelectorBox>
             </Grid>
 
             <Grid item xs={12} md={3}>
-              <Box display="flex" alignItems="center" justifyContent="center" height="100%">
-                <GradientButton startIcon={<ArrowBackIcon />} fullWidth>
+              <Box display="flex" alignItems="end" justifyContent="end" height="100%">
+                <GradientButton endIcon={<ArrowBackIcon />} fullWidth>
                   اكتشف
                 </GradientButton>
               </Box>
@@ -130,11 +181,15 @@ const HomeSearch = () => {
 
           <Popover
             id={id}
-            open={open}
+            open={Boolean(anchorEl)}
             anchorEl={anchorEl}
             onClose={handleClose}
             anchorOrigin={{
               vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
               horizontal: 'left',
             }}
           >
@@ -154,7 +209,6 @@ const HomeSearch = () => {
                     <DatePicker
                       value={startDate}
                       onChange={(newDate) => setStartDate(newDate)}
-                      // renderInput={(params) => <TextField {...params} fullWidth />}
                     />
                   </LocalizationProvider>
                 </Box>
@@ -164,7 +218,6 @@ const HomeSearch = () => {
                     <DatePicker
                       value={endDate}
                       onChange={(newDate) => setEndDate(newDate)}
-                      // renderInput={(params) => <TextField {...params} fullWidth />}
                     />
                   </LocalizationProvider>
                 </Box>
@@ -175,10 +228,9 @@ const HomeSearch = () => {
         </Box>
       )}
 
-      {tabValue === 1 && (
+      {activeTab === 1 && (
         <Box p={3}>
           <Typography variant="h6">الخريطه</Typography>
-          {/* Placeholder for map */}
           <Box mt={2}>
             <Typography variant="body1">Map Placeholder</Typography>
           </Box>
@@ -187,5 +239,7 @@ const HomeSearch = () => {
     </Box>
   );
 };
+
+
 
 export default HomeSearch;
