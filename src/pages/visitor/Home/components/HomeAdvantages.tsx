@@ -62,12 +62,14 @@ const HomeAdvantages: React.FC = () => {
       {/* Center Image */}
       <Box position="relative" width="100%" maxWidth="600px">
         <img
-          src="/images/home/connections.jpeg"
+          src="/images/home/ةask-group.png"
           style={{
             width: '100%',
-            maxWidth: '600px',
+            // maxWidth: '600px',
             display: 'block',
             margin: 'auto',
+            transform: "translateY(10px)"
+            
           }}
           alt="Advantages"
         />
@@ -114,7 +116,7 @@ const HomeAdvantages: React.FC = () => {
                 justifyContent="center"
                 width="50px"
                 height="50px"
-                bgcolor="purple" // Purple background for icons
+                bgcolor="#452775" // Purple background for icons
                 borderRadius="50%" // Circular icon background
                 color="white"
                 mr={2}
@@ -124,7 +126,7 @@ const HomeAdvantages: React.FC = () => {
               <Box
                 textAlign="left"
               >
-                <Typography variant="h6" fontWeight="bold">
+                <Typography variant="body1" fontWeight="bold">
                   {item.title}
                 </Typography>
                 <Typography variant="body2">
@@ -165,7 +167,7 @@ const HomeAdvantages: React.FC = () => {
             justifyContent="center"
             width="50px"
             height="50px"
-            bgcolor="purple"
+            bgcolor="#452775"
             borderRadius="50%"
             color="white"
             mb={2}
@@ -176,7 +178,7 @@ const HomeAdvantages: React.FC = () => {
             <Typography variant="h5" color="primary.main" fontWeight="bold">
               {benefits[0].title}
             </Typography>
-            <Typography variant="h6">
+            <Typography variant="body1" fontWeight={'bold'}>
               {benefits[0].content}
             </Typography>
           </Box>
@@ -204,7 +206,7 @@ const HomeAdvantages: React.FC = () => {
                   justifyContent="center"
                   width="50px"
                   height="50px"
-                  bgcolor="purple"
+                  bgcolor="#452775"
                   borderRadius="50%"
                   color="white"
                   mb={2}
@@ -212,10 +214,10 @@ const HomeAdvantages: React.FC = () => {
                   {benefits[index].icon}
                 </Box>
                 <Box>
-                  <Typography variant="h6" color='primary.main' fontWeight="bold">
+                  <Typography variant="body1" color='primary.main' fontWeight="bold">
                     {benefits[index].title}
                   </Typography>
-                  <Typography variant="body1" fontWeight={"bold"}>
+                  <Typography variant="body2" fontWeight={"bold"}>
                     {benefits[index].content}
                   </Typography>
                 </Box>
@@ -245,15 +247,16 @@ const HomeAdvantages: React.FC = () => {
                   justifyContent="center"
                   width="50px"
                   height="50px"
-                  bgcolor="purple"
+                  bgcolor="#452775"
                   borderRadius="50%"
                   color="white"
                   mb={2}
                   mx="auto"
+                  
                 >
                   {benefits[index].icon}
                 </Box>
-                <Typography variant="h6" textAlign={'center'} fontWeight="bold">
+                <Typography variant="body1" color="primary.main" textAlign={'center'} fontWeight="bold">
                   {benefits[index].title}
                 </Typography>
                 <Typography variant="body2" textAlign={'center'}  fontWeight="bold">

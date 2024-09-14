@@ -1,7 +1,7 @@
 import { Box, Stack, Typography, Divider } from '@mui/material';
 import navLinks from '../../data/routes';
 import { Link } from 'react-router-dom';
-import { Apple, Facebook, Google, Instagram, LinkedIn, Twitter } from '@mui/icons-material';
+import {  Facebook, Instagram, LinkedIn, Twitter } from '@mui/icons-material';
 
 const Footer: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
         color: 'white',
         padding: '40px 20px',
         width: '100%',
-        marginTop:'100px'
+        marginTop: '100px'
       }}
     >
       <Stack
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
         <Stack spacing={2} alignItems={{ xs: 'center', sm: 'flex-end' }} textAlign={{ xs: 'center', sm: 'left' }}>
           <Box
             component="img"
-            src="/logo.jpeg"
+            src="/footer-logo.png"
             alt="Company Logo"
             sx={{
               width: '150px',
@@ -61,25 +61,8 @@ const Footer: React.FC = () => {
             تنزيل التطبيق
           </Typography>
           <Stack spacing={1} direction="row" justifyContent="center" alignItems="center" gap="20px">
-            <Stack direction="row" spacing={1} alignItems="center" sx={{ backgroundColor: 'white', color: 'black', borderRadius: '10px', padding: '10px' }}>
-              <Apple sx={{ color: '#000', fontSize: '36px' }} />
-              <Box>
-                <Typography variant="body2">Get it on</Typography>
-                <Typography variant="body1" fontWeight="bold">
-                  App Store
-                </Typography>
-              </Box>
-            </Stack>
-            
-            <Stack direction="row" spacing={1} alignItems="center" sx={{ backgroundColor: 'white', color: 'black', borderRadius: '10px', padding: '10px' }}>
-              <Google sx={{ color: '#000', fontSize: '36px' }} />
-              <Box>
-                <Typography variant="body2">Get it on</Typography>
-                <Typography variant="body1" fontWeight="bold">
-                  Google Play
-                </Typography>
-              </Box>
-            </Stack>
+            <img src="/images/home/app-store-button.png" alt="" />
+            <img src="/images/home/google-button.png" alt="" />
           </Stack>
         </Stack>
       </Stack>

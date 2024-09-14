@@ -1,16 +1,16 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import './styles/swiper.css'; // Import custom CSS
 
-export default function App() {
+const HomeSwiper = () => {
   const settings = {
-    centerMode: true,
-    centerPadding: '0px',
-    slidesToShow: 1.6,
+    centerMode: true, // Enable center mode
+    centerPadding: '10%', // Adjust padding to control the spacing around the center slide
+    slidesToShow: 1.7, // Show more slides to the side of the center slide
     speed: 500,
-    infinite: true,
     dots: false,
-    arrows: true,
+    arrows: false,
     slidesToScroll: 1,
     responsive: [
       {
@@ -18,25 +18,30 @@ export default function App() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerPadding: '0px', // Adjust for smaller screens
         },
       },
     ],
   };
 
   return (
-    <div style={{ maxWidth: '90vw', margin: 'auto',marginTop: '100px',  }}> {/* Added container div with width */}
-      <Slider {...settings} className="mySlider" >
-        <div style={{ padding: '0 10px' }}> {/* Added padding */}
-          <img src="/public/images/home/swiper-1.jpeg" alt="Slide 1" style={{ width: '100%' }} />
+    <div className="slider-container">
+      <Slider {...settings}>
+        <div className="slider-slide">
+          <img src="images/home/swiper-1.png" alt="Slide 1" />
         </div>
-        <div style={{ padding: '0 10px' }}> {/* Added padding */}
-          <img src="/public/images/home/swiper-1.jpeg" alt="Slide 1" style={{ width: '100%' }} />
+        <div className="slider-slide">
+          <img src="images/home/swiper-1.png" alt="Slide 2" />
         </div>
-        <div style={{ padding: '0 10px' }}> {/* Added padding */}
-          <img src="/public/images/home/swiper-1.jpeg" alt="Slide 1" style={{ width: '100%' }} />
+        <div className="slider-slide">
+          <img src="images/home/swiper-1.png" alt="Slide 3" />
         </div>
-        
+        <div className="slider-slide">
+          <img src="images/home/swiper-1.png" alt="Slide 4" />
+        </div>
       </Slider>
     </div>
   );
-}
+};
+
+export default HomeSwiper;

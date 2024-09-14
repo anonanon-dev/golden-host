@@ -1,41 +1,44 @@
-#app {
-  height: 100%;
-}
-html,
-body {
+.slider-container {
+  max-width: 100vw;
+  margin: auto;
+  overflow: visible !important;
+  margin-top: 50px;
   position: relative;
-  height: 100%;
 }
 
-body {
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
+.slick-slide {
+  padding: 0 10px;
 }
 
-.swiper {
+.slick-list {
+  overflow: visible !important;
+}
+
+.slick-slide img {
   width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 1110px;
-  height: 543px;
+  height: auto;
   object-fit: cover;
+  outline: none;
 }
 
+.slick-slide img:focus {
+  outline: none;
+}
 
+.slick-center .slick-slide img {
+  transform: scale(1.1);
+  transition: transform 0.5s ease-in-out;
+  z-index: 10;
+}
+
+.slick-prev, .slick-next {
+  z-index: 1000;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}

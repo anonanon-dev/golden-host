@@ -1,6 +1,5 @@
 import { QrCode, Telegram } from '@mui/icons-material';
 import { Box, Typography, Stack } from '@mui/material';
-import { Apple, Google } from '@mui/icons-material';
 
 const HomeDownloadApp = () => {
   return (
@@ -84,100 +83,9 @@ const HomeDownloadApp = () => {
         </Typography>
 
         <Stack spacing={1} direction="row" textAlign={'left'} justifyContent="start" alignItems="center" gap="20px">
-          <Stack
-            direction="row-reverse"
-            spacing={1}
-            alignItems="center"
-            sx={{
-              backgroundColor: 'white',
-              color: 'black',
-              borderRadius: '10px',
-              padding: '10px',
-              width: { xs: '100%', sm: 'auto' }
-            }}
-          >
-            <Apple sx={{ color: '#000', fontSize: { xs: '20px', sm: '24px' } }} />
-            <Box>
-              <Typography
-                variant="body2"
-                fontWeight='bold'
-                textAlign='right'
-                sx={{
-                  fontSize: {
-                    xs: '0.625rem',
-                    sm: '0.75rem',
-                    md: '0.875rem',
-                    lg: '1rem'
-                  }
-                }}
-              >
-                Get it on
-              </Typography>
-              <Typography
-                variant="body1"
-                fontWeight='bold'
-                textAlign='right'
-                sx={{
-                  fontSize: {
-                    xs: '0.75rem',
-                    sm: '0.875rem',
-                    md: '1rem',
-                    lg: '1.125rem'
-                  }
-                }}
-              >
-                App Store
-              </Typography>
-            </Box>
-          </Stack>
-
-          <Stack
-            direction="row-reverse"
-            textAlign={'left'}
-            spacing={1}
-            alignItems="center"
-            sx={{
-              backgroundColor: 'white',
-              color: 'black',
-              borderRadius: '10px',
-              padding: '10px',
-              width: { xs: '100%', sm: 'auto' }
-            }}
-          >
-            <Google sx={{ color: '#000', fontSize: { xs: '20px', sm: '24px' } }} />
-            <Box>
-              <Typography
-                variant="body2"
-                fontWeight='bold'
-                textAlign='right'
-                sx={{
-                  fontSize: {
-                    xs: '0.625rem',
-                    sm: '0.75rem',
-                    md: '0.875rem',
-                    lg: '1rem'
-                  }
-                }}
-              >
-                Get it on
-              </Typography>
-              <Typography
-                variant="body1"
-                fontWeight='bold'
-                textAlign='right'
-                sx={{
-                  fontSize: {
-                    xs: '0.75rem',
-                    sm: '0.875rem',
-                    md: '1rem',
-                    lg: '1.125rem'
-                  }
-                }}
-              >
-                Google Play
-              </Typography>
-            </Box>
-          </Stack>
+          <img src="/images/home/google-button.png" alt="" style={{width: '50%'}} />
+          <img src="/images/home/app-store-button.png" alt="" style={{width: '50%'}}/>
+          
         </Stack>
 
         <Box mt={2} sx={{ display: 'flex', alignItems: 'center' }}>
@@ -213,7 +121,7 @@ const HomeDownloadApp = () => {
           order: { xs: 1, lg: 2 }  // Place this box above the text on small screens
         }}
       >
-        <img src="/images/home/app-download-2.jpeg" style={{ width: '100%', margin: 'auto' }} alt="download app" />
+        <img src="/public/images/home/mobile-app-img.png.png" style={{ width: '100%', margin: 'auto' }} alt="download app" />
       </Box>
 
       <Box
